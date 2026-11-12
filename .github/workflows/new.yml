@@ -1,5 +1,4 @@
 name: New app deploy
-
 on:
   workflow_dispatch:
 
@@ -8,8 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Build the app
-        run: mvn clean install -DskipTests=true
-
-      - name: Test the app
-        run: mvn test
+      - name: code checkout
+        uses: actions/checkout@v7
+      - name: code checking
+        run: ls
