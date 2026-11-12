@@ -1,12 +1,15 @@
-name: new app deploy
+name: New app deploy
+
 on:
   workflow_dispatch:
-  
-jobs: 
-  build-and-test-app
+
+jobs:
+  build-and-test-app:
     runs-on: ubuntu-latest
+
     steps:
-      - name: build the app
+      - name: Build the app
         run: mvn clean install -DskipTests=true
-      - name: test the app
+
+      - name: Test the app
         run: mvn test
