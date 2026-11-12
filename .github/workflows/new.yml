@@ -33,6 +33,7 @@ jobs:
       - name: docker image push
         run: docker push $DOCKER_IMAGE
   deploy-the-app:
+  needs: build-and-test-app
     runs-on: ubuntu-latest
     steps:
       - name: server ssh
