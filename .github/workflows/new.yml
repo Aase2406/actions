@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
-          java-verison: '21'  
+          java-version: '21'  
       - name: Build the app
         run: mvn clean install -DskipTests=true
       - name: Test the app
