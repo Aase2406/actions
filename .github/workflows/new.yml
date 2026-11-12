@@ -27,3 +27,5 @@ jobs:
         with:
           username: ${{vars.DOCKER_USERNAME}}
           password: ${{secrets.DOCKER_PASSWORD}}
+      - name: docker image push
+        run: docker push aase24/mohamed:gha
