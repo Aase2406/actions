@@ -33,6 +33,8 @@ jobs:
       - name: docker image push
         run: docker push $DOCKERIMAGE
   deploy-the-app:
+    env:
+      DOCKERCONTAINERNAME: newcontainer
     needs: build-and-test-app
     runs-on: ubuntu-latest
     steps:
@@ -44,5 +46,9 @@ jobs:
           key: ${{secrets.KEY}}
           port: 22
           script: |
+            docker rmi ${{env.DOCKERIMAGE}}
             docker pull ${{env.DOCKERIMAGE}}
+            docker stop ${{env.DOCKERCONTAINERNAME}}
+            docker rm ${{env.DOCKERCONTAINERNAME}}
+            docker run -d -p 80:8090 --name ${{env.DOCKERCONTAINERNAME}} ${{env.DOCKERIMAGE}}
             
